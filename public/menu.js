@@ -1,6 +1,13 @@
 var mode = 1;
 var snakes = [];
-var boards = [][]
+var walls = [];
+var boardW = 0;
+var boardH = 0;
+
+board = new Board(0,0,0,0);
+snake = new Snake(1, board);
+snakes.push(snake);
+
 
 function setup() {
 	createCanvas(windowWidth,windowHeight);
@@ -8,7 +15,13 @@ function setup() {
 	mpButton = createButton("MULTIPLAYER");
 	loButton = createButton("LOCAL");
 	onButton = createButton("ONLINE");
-	walls = [width/6, height/6, (width/6) + ((width/3) * 1.5), (height/6) + ((width/3) * 1.5];
+	walls = [windowWidth/6, windowHeight/6, (windowWidth/6) + ((windowWidth/5) * 1.5), (windowHeight/6) + ((windowWidth/5) * 1.5)];
+	boardW = walls[2] - walls[0];
+	boardH = walls[3] - walls[1];
+	board.update(boardW, boardH, walls[0], walls[1]);
+	snake.updateSizes(board);
+	snakes.push(snake);
+	
 	frameRate(10);
 	
 	background(0);
@@ -65,9 +78,15 @@ function menu2() {
 
 function windowResized() {
 	resizeCanvas(windowWidth, windowHeight);
+	walls = [windowWidth/6, windowHeight/6, (windowWidth/6) + ((windowWidth/5) * 1.5), (windowHeight/6) + ((windowWidth/5) * 1.5)];
+	boardW = walls[2] - walls[0];
+	boardH = walls[3] - walls[1];
+	board.update(boardW, boardH, walls[0], walls[1]);
+	board.show();
+	
 	if (mode == 3) { //If game playing
 		for (let i = 0; i < snakes.lenght; i++) {
-			snakes[i].changeBodySize(walls);
+			snakes[i].updateSizes(board);
 		}
 		
 	}

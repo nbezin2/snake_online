@@ -1,9 +1,18 @@
 class Body {
-	constructor(x, y) {
+	constructor(x, y, d, row, col) {
+		this.cord = [row, col];
 		this.xPos = x;
 		this.yPos = y;
-		this.width = 10;
-		this.height = 10;
+		this.width = d;
+		this.height = d;
+	}
+	
+	getCord() {
+		return this.cord;
+	}
+	
+	setCord(xy) {
+		this.cord = xy;
 	}
 	
 	getH() {
@@ -12,6 +21,11 @@ class Body {
 	
 	getW() {
 		return this.width;
+	}
+	
+	setD(d) {
+		this.width = d;
+		this.height = d;
 	}
 	
 	getX() {
