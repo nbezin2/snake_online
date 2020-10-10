@@ -6,7 +6,6 @@ var boardH = 0;
 
 board = new Board(0,0,0,0);
 snake = new Snake(1, board);
-snakes.push(snake);
 
 
 function setup() {
@@ -85,7 +84,7 @@ function windowResized() {
 	board.show();
 	
 	if (mode == 3) { //If game playing
-		for (let i = 0; i < snakes.lenght; i++) {
+		for (let i = 0; i < snakes.length; i++) {
 			snakes[i].updateSizes(board);
 		}
 		

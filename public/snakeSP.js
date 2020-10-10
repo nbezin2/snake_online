@@ -1,6 +1,6 @@
 
 function spMode() {
 	board.show();
-	//snake.update();
-	snake.show();
+	snake.update();
+	snakes[0].show();
 }
