@@ -1,19 +1,22 @@
 class Board {
 	constructor(w, h , x, y) {
-		this.width = w;
-		this.height = h;
+		this.width = w - (w%40);
+		this.height = w - (w%40);
 		this.xPos = x;
 		this.yPos = y;
-		this.posSize = this.width/100;
+		this.posSize = (w - (w%40))/40;
 		this.walls = [this.x, this.x+this.width, this.y, this.y + this.height];
 	}
 	
 	update(w, h, x, y) {
-		this.width = w;
-		this.height = h;
+		
+		this.posSize = (w - (w%40))/40;
+		
+		this.width = w - (w%40);
+		this.height = w - (w%40);
 		this.xPos = x;
 		this.yPos = y;
-		this.posSize = this.width/100;
+		
 		this.walls = [this.x, this.x+this.width, this.y, this.y + this.height];
 	}
 	
